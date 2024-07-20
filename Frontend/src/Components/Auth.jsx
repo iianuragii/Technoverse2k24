@@ -63,7 +63,7 @@ const Auth = () => {
               fontWeight: 'bold',
             }}
           >
-            Sign In
+            Login
           </button>
         </div>
       </form>
