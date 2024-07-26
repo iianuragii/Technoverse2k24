@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   const { email } = req.body;
-  console.log('Received email:', email);
+  console.log('Received email: ', email);
 });
 
 app.listen(PORT, () => {
