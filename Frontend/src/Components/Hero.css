@@ -1,0 +1,109 @@
+.hero-container {
+  position: relative;
+  padding: 50px;
+  text-align: left;
+  height: 50vh;
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  justify-content: flex-start;
+}
+
+.ellipse {
+  position: absolute;
+  width: 60vw; 
+  height: 60vh; 
+  left: -20vw; 
+  top: -20vh;
+  background: radial-gradient(50% 50% at 50% 50%, #453B6E 5.27%, #1d1d1d 84.98%);
+  opacity: 0.67;
+  filter: blur(3.3px);
+  transform: scale(2.0);
+  z-index: -1;
+}
+
+.hero-text {
+  max-width: 80%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 6vw;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 20px;
+  margin-top: 0; /* Adjust top margin */
+}
+
+.description-text {
+  max-width: 80%;
+  font-family: 'Poppins';
+  font-weight: 300;
+  font-size: 3vw;
+  line-height: 1.5;
+  color: #cccccc;
+  margin-bottom: 20px;
+  margin-top: 10px; /* Adjust top margin */
+}
+
+.hero-image {
+  max-width: 200%;
+  height: auto;
+  margin-top: 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px ;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.about-section {
+  margin: 100px 0;
+}
+
+.about-card {
+  background-color: #1d1d1d;
+  color: #cccccc;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about-card .MuiCardHeader-root {
+  background-color: #8A6FF2;
+  color: white;
+  font-weight: 700;
+  border-radius: 0 0 0 0;
+}
+
+.about-card .MuiCardContent-root {
+  font-family: 'Poppins';
+  font-weight: bold;
+
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    padding: 50px;
+    flex-direction: row;
+  }
+
+  .hero-text {
+    font-size: 4rem;
+    max-width: 600px;
+    margin-top: 0; /* Adjust top margin */
+  }
+
+  .description-text {
+    font-size: 1.5rem;
+    max-width: 600px;
+    margin-top: 10px; /* Adjust top margin */
+  }
+
+  .hero-image {
+    max-width: 40%;
+    height: auto;
+    margin-top: 0;
+  }
+}
