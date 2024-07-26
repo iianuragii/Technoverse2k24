@@ -11,9 +11,15 @@
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.16.0",
+
+    "@nomicfoundation/hardhat-ignition": "^0.15.5",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "nodemon": "^3.1.4"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.22.6"
   }
 }
