@@ -2,6 +2,10 @@ import React from 'react'
 import Auth from './Components/Auth'
 import Hero from './Components/Hero'
 import About from './Components/About'
+import Upload from "../../artifacts/contracts/Upload.sol/Upload.json"
+import FileUpload from './Components/FileUpload'
+import Modal from "./Components/Modal"
+import { ethers } from "ethers";
 import Support from './Components/Support'
 import Navbar from './Components/Navbar'
 import Dashboard from './Components/Dashboard'
