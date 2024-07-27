@@ -1,9 +1,8 @@
 import React from 'react';
 import { Typography, Button, Grid, useTheme, Box, Grow, Fade } from '@mui/material';
 import heroimage from '../assets/heroimage.svg';
-import './Hero.css';
+import './Global.css';
 import { Link } from 'react-router-dom';
-import Chatbot from './Chatbot';
 
 const Hero = () => {
   const theme = useTheme();
@@ -52,7 +51,7 @@ const Hero = () => {
               variant="outlined" 
               sx={{ backgroundColor: 'white', color: 'black', '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' } }}
             >
-              <Link to='/signup' style={{ textDecoration: 'none', color: 'black' }}>
+              <Link to='/sign-up' style={{ textDecoration: 'none', color: 'black' }}>
                 GET STARTED
               </Link>
             </Button>

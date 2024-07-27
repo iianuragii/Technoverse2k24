@@ -10,10 +10,14 @@ const { runChat } = require('./Modules_Backend/runChat');
 app.use(cors());
 app.use(express.json());  
 
-// app.post('/', (req, res) => {
-//   const { email } = req.body;
-//   console.log('Received email: ', email);
-// });
+app.post('/sign-up', (req, res) => {
+  const { email, password, confirmPassword } = req.body;
+  console.log('Received email: ', email);
+  console.log('Received password: ', password);
+  console.log('Received confirmPassword: ', confirmPassword);
+
+  res.json({ message: 'Signup data received' });
+});
 
 app.post('/chat', async (req, res) => {
   try {
