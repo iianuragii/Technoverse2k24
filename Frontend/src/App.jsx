@@ -12,6 +12,8 @@ import Dashboard from './Components/Dashboard'
 import Signup from './Components/Signup'
 import './style.css';
 import { Routes, Route,  } from 'react-router-dom'
+import { Grid } from '@mui/material'
+import Chatbot from './Components/Chatbot'
 
 
 const App = () => {
@@ -20,7 +22,9 @@ const App = () => {
     <div>
       <Navbar/>
     </div>
-      
+    <div>
+      <Chatbot/>
+    </div>
     
     <Routes>
       <Route path="/" element={<Hero />} />
