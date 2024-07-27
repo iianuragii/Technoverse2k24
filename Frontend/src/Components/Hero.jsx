@@ -3,6 +3,7 @@ import { Typography, Button, Grid, useTheme, Box, Grow, Fade } from '@mui/materi
 import heroimage from '../assets/heroimage.svg';
 import './Hero.css';
 import { Link } from 'react-router-dom';
+import Chatbot from './Chatbot';
 
 const Hero = () => {
   const theme = useTheme();
@@ -26,6 +27,7 @@ const Hero = () => {
         justifyContent="flex-start"
         sx={{ textAlign: { xs: 'center', md: 'left' }, marginTop: { xs: theme.spacing(1), md: theme.spacing(2) } }}
       >
+        
         <Grow in timeout={1000}>
           <Typography 
             variant='h2' 
