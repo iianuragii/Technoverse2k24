@@ -9,7 +9,6 @@ const Navbar = () => {
             elevation={0}
             sx={{ 
                 background: 'rgba(255, 255, 255, 0.1)',
-
                 backdropFilter: 'blur(10px)', 
                 boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
@@ -42,7 +41,7 @@ const Navbar = () => {
                             '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
                         }}
                     >
-                        <Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>
+                        <Link to='/sign-up' style={{ textDecoration: 'none', color: 'white' }}>
                             Sign Up
                         </Link>
                     </Button>

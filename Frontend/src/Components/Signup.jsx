@@ -1,8 +1,9 @@
-import React from 'react';
-import { Button, TextField, Typography, Container, Box, useTheme, styled } from '@mui/material';
-import './Hero.css';
+import React, { useState } from 'react';
+import { Button, TextField, Typography, Container, Box, Grid, useTheme, styled } from '@mui/material';
+import axios from 'axios';
+import './Global.css';
 
-const CustomTextField = styled(TextField)(({ theme }) => ({
+const CustomTextField = styled(TextField)(() => ({
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
       borderColor: 'white',
@@ -23,6 +24,30 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const userData = {
+      email,
+      password,
+      confirmPassword,
+    };
+
+    console.log({
+      email: userData.email,
+    });
+
+    try {
+      const response = await axios.post('http://localhost:5000/sign-up', userData);
+      console.log('Response from backend:', response.data);
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+    }
+  };
+
   const theme = useTheme();
   return (
     <Container maxWidth="sm">
@@ -38,20 +63,65 @@ const Signup = () => {
         <Typography variant="body1" gutterBottom className='description-text'>
           Join FlickFile today and take control of your digital assets.
         </Typography>
-        <Box component="form" mt={4}>
-          <CustomTextField label="Email" variant="outlined" fullWidth margin="normal" />
-          <CustomTextField label="Password" variant="outlined" fullWidth margin="normal" type="password" />
-          <CustomTextField label="Confirm Password" variant="outlined" fullWidth margin="normal" type="password" />
-          <Box mt={4}>
-            <Button  variant="outlined"
-                        sx={{
-                            borderColor: '#8A6FF2',
-                            color: 'white',
-                            '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                        }} size="large" fullWidth>
-              Sign Up
-            </Button>
-          </Box>
+        <Box mt={4}>
+          <form onSubmit={handleSubmit}>
+            <CustomTextField
+              label="Email"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+            <CustomTextField
+              label="Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            <CustomTextField
+              label="Confirm Password"
+              variant="outlined"
+              fullWidth
+              margin="normal"
+              type="password"
+              value={confirmPassword}
+              onChange={e => setConfirmPassword(e.target.value)}
+              required
+            />
+            <Grid mt={4}>
+              {
+                (password === confirmPassword)
+                ?                
+                  <Button
+                  type='submit'
+                  variant="outlined"
+                  sx={{
+                    borderColor: '#8A6FF2',
+                    color: 'white',
+                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                  }} 
+                  size="large" fullWidth>
+                  Sign Up
+                  </Button>
+                : <Button
+                  variant="outlined"
+                  sx={{
+                    borderColor: '#8A6FF2',
+                    color: 'white',
+                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                  }} 
+                  size="large" fullWidth>
+                    Sign Up
+                  </Button>
+              }              
+            </Grid>
+          </form>          
         </Box>
       </Box>
     </Container>

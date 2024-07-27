@@ -1,8 +1,7 @@
 import React from 'react';
 import { Typography, Grid, useTheme, Box, Grow, Fade } from '@mui/material';
 import Aboutpic from '../assets/Aboutpic.svg';
-import './Hero.css';
-import Chatbot from './Chatbot';
+import './Global.css';
 
 const About = () => {
   const theme = useTheme();
