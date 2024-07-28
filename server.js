@@ -12,7 +12,7 @@ const { runChat } = require('./Modules_Backend/runChat');
 app.use(cors());
 app.use(express.json());  
 
-app.post('/sign-up', async (req, res) => {
+app.post('/', async (req, res) => {
   const { email, password, confirmPassword } = req.body;
   console.log('Received email: ', email);
   console.log('Received password: ', password);

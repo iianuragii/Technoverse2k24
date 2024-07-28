@@ -3,19 +3,20 @@ import { Typography, Button, Grid, useTheme, Box, Grow, Fade } from '@mui/materi
 import heroimage from '../assets/heroimage.svg';
 import './Global.css';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
+import Chatbot from './Chatbot';
 
 const Hero = () => {
   const theme = useTheme();
 
   return (
+    <>
+    <Navbar/>
     <Grid 
       container 
       className="hero-container"
     >
-      <Grid item xs={12}>
-        <div className="ellipse"></div>
-      </Grid>
-
+      <Chatbot/>
       <Grid 
         item 
         xs={12} 
@@ -51,7 +52,7 @@ const Hero = () => {
               variant="outlined" 
               sx={{ backgroundColor: 'white', color: 'black', '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' } }}
             >
-              <Link to='/sign-up' style={{ textDecoration: 'none', color: 'black' }}>
+              <Link to='#' style={{ textDecoration: 'none', color: 'black' }}>
                 GET STARTED
               </Link>
             </Button>
@@ -77,6 +78,7 @@ const Hero = () => {
         </Fade>
       </Grid>
     </Grid>
+    </>
   );
 };
 

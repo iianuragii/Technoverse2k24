@@ -6,6 +6,9 @@ import { Button, Typography, Box, Grid, Container} from '@mui/material';
 import FileUpload from './FileUpload'
 import Modal from "./Modal"
 import Display from './Display';
+import Navbar from './Navbar';
+import Chatbot from './Chatbot';
+
 const Dashboard = () => {
   const [account, setAccount] = useState("");
   const [contract, setContract] = useState(null);
@@ -45,8 +48,10 @@ const Dashboard = () => {
     provider && loadProvider();
   }, []);
   return(
-    
+    <>
+      <Navbar/>
     <Container>
+      <Chatbot/>
     <Box
     sx={{
         position: 'fixed',
@@ -91,6 +96,7 @@ const Dashboard = () => {
             </Grid>
         </Grid>
     </Container>
+    </>
   )
 }
 export default Dashboard

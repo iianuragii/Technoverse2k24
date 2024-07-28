@@ -2,31 +2,20 @@ import React from 'react'
 import Home from './Components/Home'
 import About from './Components/About'
 import Support from './Components/Support'
-import Navbar from './Components/Navbar'
 import Dashboard from './Components/Dashboard'
 import Signup from './Components/Signup'
 import './style.css';
-import { Routes, Route,  } from 'react-router-dom'
-import Chatbot from './Components/Chatbot'
-
-
+import { Routes, Route } from 'react-router-dom'
 
 const App = () => {  
   return (
     <>
-    <div>
-      <Navbar/>
-    </div>
-    <div>
-      <Chatbot/>
-    </div>
-    
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path='/' element={<Signup/>}/>
+      <Route path="/home" element={<Home />} />
       <Route path='/about' element={<About/>}/>
       <Route path='/support' element={<Support/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
-      <Route path='/sign-up' element={<Signup/>}/>     
+      <Route path='/dashboard' element={<Dashboard/>}/>           
     </Routes>
     </>
   )
