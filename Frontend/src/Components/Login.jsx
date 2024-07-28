@@ -23,26 +23,18 @@ const CustomTextField = styled(TextField)(() => ({
   },
 }));
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = {
-      email,
-      password,
-      confirmPassword,
-    };
-
-    console.log({
-      email: userData.email,
-    });
+    const userData = { email, password };
 
     try {
-      const response = await axios.post('http://localhost:5000/sign-up', userData);
+      const response = await axios.post('http://localhost:5000/login', userData);
       console.log('Response from backend:', response.data);
+      // Handle successful login (e.g., save token, update auth state)
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -58,10 +50,10 @@ const Signup = () => {
           className="hero-text" 
           style={{ fontWeight: 'bold', marginBottom: theme.spacing(2) }}
         >
-          <span style={{ color: '#8A6FF2' }}>Create</span> Your Account 
+          <span style={{ color: '#8A6FF2' }}>Login</span> to Your Account 
         </Typography>
         <Typography variant="body1" gutterBottom className='description-text'>
-          Join FlickFile today and take control of your digital assets.
+          Access your FlickFile account and manage your digital assets.
         </Typography>
         <Box mt={4}>
           <form onSubmit={handleSubmit}>
@@ -84,42 +76,18 @@ const Signup = () => {
               onChange={e => setPassword(e.target.value)}
               required
             />
-            <CustomTextField
-              label="Confirm Password"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              type="password"
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
-              required
-            />
             <Grid mt={4}>
-              {
-                (password === confirmPassword)
-                ?                
-                  <Button
-                  type='submit'
-                  variant="outlined"
-                  sx={{
-                    borderColor: '#8A6FF2',
-                    color: 'white',
-                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                  }} 
-                  size="large" fullWidth>
-                  Sign Up
-                  </Button>
-                : <Button
-                  variant="outlined"
-                  sx={{
-                    borderColor: '#8A6FF2',
-                    color: 'white',
-                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                  }} 
-                  size="large" fullWidth>
-                    Sign Up
-                  </Button>
-              }              
+              <Button
+                type='submit'
+                variant="outlined"
+                sx={{
+                  borderColor: '#8A6FF2',
+                  color: 'white',
+                  '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                }} 
+                size="large" fullWidth>
+                Login
+              </Button>
             </Grid>
           </form>          
         </Box>
@@ -128,4 +96,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;

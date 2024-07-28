@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Grid, useTheme, Box, Grow, Fade } from '@mui/material';
 import Aboutpic from '../assets/Aboutpic.svg';
-import './Hero.css';
+import './Global.css';
 
 const About = () => {
   const theme = useTheme();
@@ -48,7 +48,9 @@ const About = () => {
           </Typography>
         </Grow>
       </Grid>
-
+      {/* <Grid>
+        <Chatbot/>
+      </Grid> */}
       <Grid item xs={12} md={6} container justifyContent="center" alignItems="center">
         <Fade in timeout={2000}>
           <img 
@@ -57,6 +59,7 @@ const About = () => {
             style={{ width: '100%', maxWidth: '700px', height: 'auto' }} 
           />
         </Fade>
+        
       </Grid>
       
       <Grid 

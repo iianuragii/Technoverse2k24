@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 
 const Navbar = () => {
+    const { isAuthenticated, logout } = useContext(AuthContext);
+
     return (
         <AppBar 
             position="static" 
             elevation={0}
             sx={{ 
                 background: 'rgba(255, 255, 255, 0.1)',
-
                 backdropFilter: 'blur(10px)', 
                 boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
@@ -34,18 +36,47 @@ const Navbar = () => {
                     </Button>
                 </Box>
                 <Box>
-                    <Button
-                        variant="outlined"
-                        sx={{
-                            borderColor: '#8A6FF2',
-                            color: 'white',
-                            '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                        }}
-                    >
-                        <Link to='/signup' style={{ textDecoration: 'none', color: 'white' }}>
-                            Sign Up
-                        </Link>
-                    </Button>
+                    {isAuthenticated ? (
+                        <Button
+                            variant="outlined"
+                            onClick={logout}
+                            sx={{
+                                borderColor: '#8A6FF2',
+                                color: 'white',
+                                '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                            }}
+                        >
+                            Logout
+                        </Button>
+                    ) : (
+                        <>
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    borderColor: '#8A6FF2',
+                                    color: 'white',
+                                    marginRight: 1,
+                                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                                }}
+                            >
+                                <Link to='/sign-up' style={{ textDecoration: 'none', color: 'white' }}>
+                                    Sign Up
+                                </Link>
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                sx={{
+                                    borderColor: '#8A6FF2',
+                                    color: 'white',
+                                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                                }}
+                            >
+                                <Link to='/login' style={{ textDecoration: 'none', color: 'white' }}>
+                                    Login
+                                </Link>
+                            </Button>
+                        </>
+                    )}
                 </Box>
             </Toolbar>
         </AppBar>
