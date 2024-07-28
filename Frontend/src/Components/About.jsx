@@ -2,18 +2,20 @@ import React from 'react';
 import { Typography, Grid, useTheme, Box, Grow, Fade } from '@mui/material';
 import Aboutpic from '../assets/Aboutpic.svg';
 import './Global.css';
+import Navbar from './Navbar';
+import Chatbot from './Chatbot';
 
 const About = () => {
   const theme = useTheme();
 
-  return (
+  return (  
+    <>
+      <Navbar/>
     <Grid 
       container 
       className="hero-container"
     >
-      <Grid item xs={12}>
-        <div className="ellipse"></div>
-      </Grid>
+      <Chatbot/>
 
       <Grid 
         item 
@@ -130,6 +132,7 @@ const About = () => {
         </Grid>
       </Grid>
     </Grid>
+    </>
   );
 };
 

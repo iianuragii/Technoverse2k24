@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Box, Grid, useTheme, styled } from '@mui/material';
 import axios from 'axios';
 import './Global.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const CustomTextField = styled(TextField)(() => ({
   '& .MuiOutlinedInput-root': {
@@ -27,6 +30,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,8 +45,9 @@ const Signup = () => {
     });
 
     try {
-      const response = await axios.post('http://localhost:5000/sign-up', userData);
+      const response = await axios.post('http://localhost:5000/', userData);
       console.log('Response from backend:', response.data);
+      navigate('/home');
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -107,7 +112,9 @@ const Signup = () => {
                     '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
                   }} 
                   size="large" fullWidth>
-                  Sign Up
+                    {/* <Link to='/home' style={{ textDecoration: 'none', color: 'white' }}> */}
+                      Sign Up
+                    {/* </Link>                   */}
                   </Button>
                 : <Button
                   variant="outlined"

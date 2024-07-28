@@ -57,7 +57,7 @@ const Chatbot = () => {
                     sx={{
                         position: 'absolute',
                         top: '5px',
-                        left: '640px',
+                        left: '64px',
                         width: '8rem',
                         height: '8rem',
                         cursor: 'pointer', // Change cursor to pointer when clicking

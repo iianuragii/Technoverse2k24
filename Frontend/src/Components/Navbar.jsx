@@ -20,7 +20,7 @@ const Navbar = () => {
                 </Typography>
                 <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
                     <Button color="inherit">
-                        <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
+                        <Link to='/home' style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
                     </Button>
                     <Button color="inherit">
                         <Link to='/about' style={{ textDecoration: 'none', color: 'white' }}>About</Link>
@@ -41,8 +41,8 @@ const Navbar = () => {
                             '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
                         }}
                     >
-                        <Link to='/sign-up' style={{ textDecoration: 'none', color: 'white' }}>
-                            Sign Up
+                        <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+                            Sign out
                         </Link>
                     </Button>
                 </Box>
