@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Box, Button, TextField, MenuItem, Accordion, AccordionSummary, AccordionDetails, useTheme } from '@mui/material';
+import { Typography, Grid, Box, Button, TextField, Accordion, AccordionSummary, AccordionDetails, useTheme } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Hero.css'; // Assuming this contains the gradient and other styles from Hero
 
@@ -45,61 +45,25 @@ const Support = () => {
           className="description-text"
           style={{ marginTop: theme.spacing(2), marginBottom: theme.spacing(4) }}
         >
-          How can we assist you? Please select a topic from the drop-down below and provide your email for authentication.
+          How can we assist you? Please describe your issue below and provide your email for authentication.
         </Typography>
         
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: theme.spacing(2), width: '100%', maxWidth: '500px' }}>
-          <TextField
-            select
-            label="Select Topic"
-            value={comment}
-            onChange={handleCommentChange}
-            variant="outlined"
-            fullWidth
-            InputProps={{
-              style: { color: 'grey', borderColor: 'white' },
-              classes: {
-                notchedOutline: {
-                  borderColor: 'white',
-                },
-              },
-            }}
-            InputLabelProps={{
-              style: { color: 'grey' },
-            }}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: 'white',
-                },
-                '&:hover fieldset': {
-                  borderColor: 'white',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: 'white',
-                },
-              },
-            }}
-          >
-            <MenuItem value="Technical Issue">Technical Issue</MenuItem>
-            <MenuItem value="Billing Inquiry">Billing Inquiry</MenuItem>
-            <MenuItem value="General Question">General Question</MenuItem>
-          </TextField>
           <TextField
             label="Email"
             type="email"
             variant="outlined"
             fullWidth
             InputProps={{
-              style: { color: 'grey', borderColor: 'white' },
-              classes: {
-                notchedOutline: {
-                  borderColor: 'white',
-                },
-              },
+              style: {
+                color: 'grey',
+                borderColor: 'white'
+              }
             }}
             InputLabelProps={{
-              style: { color: 'grey' },
+              style: {
+                color: 'white'
+              }
             }}
             sx={{
               '& .MuiOutlinedInput-root': {
@@ -112,7 +76,40 @@ const Support = () => {
                 '&.Mui-focused fieldset': {
                   borderColor: 'white',
                 },
-              },
+              }
+            }}
+          />
+          <TextField
+            label="Comment"
+            variant="outlined"
+            multiline
+            rows={4}
+            value={comment}
+            onChange={handleCommentChange}
+            fullWidth
+            InputProps={{
+              style: {
+                color: 'grey',
+                borderColor: 'white'
+              }
+            }}
+            InputLabelProps={{
+              style: {
+                color: 'white'
+              }
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'white',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'white',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'white',
+                },
+              }
             }}
           />
           <Button 
