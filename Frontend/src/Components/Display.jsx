@@ -1,78 +1,94 @@
-import React from 'react'
-import { useState } from "react";
-import { Box, Button, TextField, Grid } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import React, { useState } from "react";
+import { Box, Button, TextField, Grid } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 const CustomTextField = styled(TextField)({
-    '& label': {
-      color: 'white',
+  '& label': {
+    color: 'white',
+  },
+  '& label.Mui-focused': {
+    color: 'white',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'white',
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: 'white',
     },
-    '& label.Mui-focused': {
-      color: 'white',
+    '&:hover fieldset': {
+      borderColor: 'white',
     },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: 'white',
+    '&.Mui-focused fieldset': {
+      borderColor: 'white',
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        borderColor: 'white',
-      },
-      '&:hover fieldset': {
-        borderColor: 'white',
-      },
-      '&.Mui-focused fieldset': {
-        borderColor: 'white',
-      },
-    },
-  });
+  },
+});
 
 function Display({ contract, account }) {
+  const [data, setData] = useState([]);
 
-    
-    const [data, setData] = useState("");
-    const getdata = async () => {
-      let dataArray;
-      const Otheraddress = document.querySelector(".address").value;
-      try {
-        if (Otheraddress) {
-          dataArray = await contract.display(Otheraddress);
-          console.log(dataArray);
-        } else {
-          dataArray = await contract.display(account);
-        }
-      } catch (e) {
-        alert("You don't have access");
-      }
-      const isEmpty = Object.keys(dataArray).length === 0;
-  
-      if (!isEmpty) {
-        const str = dataArray.toString();
-        const str_array = str.split(",");
-        // console.log(str);
-        // console.log(str_array);
-        const images = str_array.map((item, i) => {
-          return (
-            <a href={item} key={i} target="_blank">
-              <img
-                key={i}
-                src={`https://gateway.pinata.cloud/ipfs/${item.substring(6)}`}
-                alt="new"
-                className="image-list"
-              ></img>
-            </a>
-          );
-        });
-        setData(images);
+  const getdata = async () => {
+    let dataArray;
+    const Otheraddress = document.querySelector(".address").value;
+    try {
+      if (Otheraddress) {
+        dataArray = await contract.display(Otheraddress);
       } else {
-        alert("No image to display");
+        dataArray = await contract.display(account);
       }
-    };
+    } catch (e) {
+      alert("You don't have access");
+      return;
+    }
+    if (dataArray && dataArray.length > 0) {
+      const str_array = dataArray.toString().split(",");
+      const images = str_array.map((item, i) => {
+        let cleanItem = item;
+
+        if (item.startsWith("ipfs://")) {
+          cleanItem = item.substring(7);
+        } else if (item.startsWith("https://gateway.pinata.cloud/ipfs/")) {
+          cleanItem = item.substring(28);
+        }
+
+        cleanItem = cleanItem.replace('/fs/', '');
+
+        const imageUrl = `https://gateway.pinata.cloud/ipfs/${cleanItem}`;
+
+        return {
+          url: imageUrl,
+          key: i,
+        };
+      });
+      setData(images);
+    } else {
+      alert("No image to display");
+    }
+  };
+
   return (
     <Box sx={{ mt: 8 }}>
       <Grid container spacing={2} direction="column" alignItems="center">
         <Grid item xs={12}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            {data}
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '100%', overflow: 'auto' }}>
+            <Grid container spacing={2} justifyContent="center">
+              {data.map(({ url, key }) => (
+                <Grid item key={key}>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={url}
+                      alt={`Image_${key}`}
+                      style={{ width: '100px', height: '100px', objectFit: 'cover', margin: '10px' }}
+                      onError={(e) => {
+                        e.target.src = 'https://via.placeholder.com/100?text=Image+Not+Found';
+                        console.error(`Failed to load image at ${url}`);
+                      }}
+                    />
+                  </a>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Grid>
         <Grid item xs={12}>
@@ -95,7 +111,7 @@ function Display({ contract, account }) {
         </Grid>
       </Grid>
     </Box>
-  )
+  );
 }
 
-export default Display
+export default Display;
