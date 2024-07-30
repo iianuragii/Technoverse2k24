@@ -4,6 +4,7 @@ import About from './Components/About'
 import Support from './Components/Support'
 import Dashboard from './Components/Dashboard'
 import Signup from './Components/Signup'
+import Login from './Components/Login'
 import './style.css';
 import { Routes, Route } from 'react-router-dom'
 
@@ -12,6 +13,7 @@ const App = () => {
     <>
     <Routes>
       <Route path='/' element={<Signup/>}/>
+      <Route path='/login' element={<Login/>}/>
       <Route path="/home" element={<Home />} />
       <Route path='/about' element={<About/>}/>
       <Route path='/support' element={<Support/>}/>
@@ -21,4 +23,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

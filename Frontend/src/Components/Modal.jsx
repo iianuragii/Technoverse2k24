@@ -1,3 +1,4 @@
+
 // import React from 'react'
 // import { useEffect } from "react";
 // import { Box, Button, Typography, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
@@ -189,3 +190,4 @@ const Modal = ({ setModalOpen, contract }) => {
 };
 
 export default Modal;
+

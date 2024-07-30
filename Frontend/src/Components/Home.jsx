@@ -52,8 +52,8 @@ const Hero = () => {
               variant="outlined" 
               sx={{ backgroundColor: 'white', color: 'black', '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' } }}
             >
-              <Link to='#' style={{ textDecoration: 'none', color: 'black' }}>
-                GET STARTED
+              <Link to='/dashboard' style={{ textDecoration: 'none', color: 'black' }}>
+                UPLOAD NOW
               </Link>
             </Button>
           </Fade>
@@ -62,7 +62,9 @@ const Hero = () => {
               variant="outlined" 
               sx={{ borderColor: '#8A6FF2', color: '#8A6FF2', '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' } }}
             >
-              Upload File
+              <Link to='/about' style={{ textDecoration: 'none', color: '#8A6FF2' }}>
+              KNOW MORE
+              </Link>
             </Button>
           </Fade>
         </Box>

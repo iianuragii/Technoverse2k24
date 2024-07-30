@@ -24,10 +24,9 @@ const CustomTextField = styled(TextField)(() => ({
   },
 }));
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -35,7 +34,6 @@ const Signup = () => {
     const userData = {
       email,
       password,
-      confirmPassword,
     };
 
     console.log({
@@ -61,10 +59,10 @@ const Signup = () => {
           className="hero-text" 
           style={{ fontWeight: 'bold', marginBottom: theme.spacing(2) }}
         >
-          <span style={{ color: '#8A6FF2' }}>Create</span> Your Account 
+          <span style={{ color: '#8A6FF2' }}>Sign In</span> To Your Account 
         </Typography>
         <Typography variant="body1" gutterBottom className='description-text'>
-          Join FlickFile today and take control of your digital assets.
+          Good to see you again, Welcome!
         </Typography>
         <Box mt={4}>
           <form onSubmit={handleSubmit}>
@@ -87,21 +85,9 @@ const Signup = () => {
               onChange={e => setPassword(e.target.value)}
               required
             />
-            <CustomTextField
-              label="Confirm Password"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              type="password"
-              value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
-              required
-            />
             <Grid mt={4}>
-              {
-                (password === confirmPassword)
-                ?                
-                  <Button
+              <Link to="/home" style={{ textDecoration: 'none', width: '100%' }}>
+                <Button
                   type='submit'
                   variant="outlined"
                   sx={{
@@ -110,30 +96,15 @@ const Signup = () => {
                     '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
                   }} 
                   size="large" fullWidth>
-                      Sign Up
-                  </Button>
-                : <Button
-                  variant="outlined"
-                  sx={{
-                    borderColor: '#8A6FF2',
-                    color: 'white',
-                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                  }} 
-                  size="large" fullWidth>
-                    Sign Up
-                  </Button>
-              }              
+                    Log In
+                </Button>
+              </Link>
             </Grid>
           </form>          
-        </Box>
-        <Box mt={2} textAlign="center">
-          <Typography variant="body2" color="white">
-            Already have an account? <Link to="/login" style={{ color: 'white', textDecoration: 'underline' }}>Login here</Link>
-          </Typography>
         </Box>
       </Box>
     </Container>
   );
 };
 
-export default Signup;
+export default Login;
