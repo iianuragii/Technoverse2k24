@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Box, Grid, useTheme, styled } from '@mui/material';
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 import './Global.css';
 
 const CustomTextField = styled(TextField)(() => ({
@@ -27,6 +28,7 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,8 +43,9 @@ const Signup = () => {
     });
 
     try {
-      const response = await axios.post('http://localhost:5000/sign-up', userData);
+      const response = await axios.post('http://localhost:5000/', userData);
       console.log('Response from backend:', response.data);
+      navigate('/home');
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -107,7 +110,7 @@ const Signup = () => {
                     '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
                   }} 
                   size="large" fullWidth>
-                  Sign Up
+                      Sign Up
                   </Button>
                 : <Button
                   variant="outlined"
@@ -122,6 +125,11 @@ const Signup = () => {
               }              
             </Grid>
           </form>          
+        </Box>
+        <Box mt={2} textAlign="center">
+          <Typography variant="body2" color="white">
+            Already have an account? <Link to="/login" style={{ color: 'white', textDecoration: 'underline' }}>Login here</Link>
+          </Typography>
         </Box>
       </Box>
     </Container>

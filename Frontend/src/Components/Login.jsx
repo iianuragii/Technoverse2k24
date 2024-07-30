@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Box, Grid, useTheme, styled } from '@mui/material';
 import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
 import './Global.css';
 
 const CustomTextField = styled(TextField)(() => ({
@@ -26,15 +27,23 @@ const CustomTextField = styled(TextField)(() => ({
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userData = { email, password };
+    const userData = {
+      email,
+      password,
+    };
+
+    console.log({
+      email: userData.email,
+    });
 
     try {
-      const response = await axios.post('http://localhost:5000/login', userData);
+      const response = await axios.post('http://localhost:5000/', userData);
       console.log('Response from backend:', response.data);
-      // Handle successful login (e.g., save token, update auth state)
+      navigate('/home');
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -50,10 +59,10 @@ const Login = () => {
           className="hero-text" 
           style={{ fontWeight: 'bold', marginBottom: theme.spacing(2) }}
         >
-          <span style={{ color: '#8A6FF2' }}>Login</span> to Your Account 
+          <span style={{ color: '#8A6FF2' }}>Sign In</span> To Your Account 
         </Typography>
         <Typography variant="body1" gutterBottom className='description-text'>
-          Access your FlickFile account and manage your digital assets.
+          Good to see you again, Welcome!
         </Typography>
         <Box mt={4}>
           <form onSubmit={handleSubmit}>
@@ -77,17 +86,19 @@ const Login = () => {
               required
             />
             <Grid mt={4}>
-              <Button
-                type='submit'
-                variant="outlined"
-                sx={{
-                  borderColor: '#8A6FF2',
-                  color: 'white',
-                  '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                }} 
-                size="large" fullWidth>
-                Login
-              </Button>
+              <Link to="/home" style={{ textDecoration: 'none', width: '100%' }}>
+                <Button
+                  type='submit'
+                  variant="outlined"
+                  sx={{
+                    borderColor: '#8A6FF2',
+                    color: 'white',
+                    '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                  }} 
+                  size="large" fullWidth>
+                    Log In
+                </Button>
+              </Link>
             </Grid>
           </form>          
         </Box>

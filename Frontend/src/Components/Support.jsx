@@ -2,6 +2,8 @@ import React from 'react';
 import { Typography, Grid, Box, Button, TextField, Accordion, AccordionSummary, AccordionDetails, useTheme } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Global.css'; // Assuming this contains the gradient and other styles from Hero
+import Navbar from './Navbar';
+import Chatbot from './Chatbot';
 
 const Support = () => {
   const theme = useTheme();
@@ -12,17 +14,13 @@ const Support = () => {
   };
 
   return (
-    <Grid 
-      container 
-      className="hero-container"
-      direction="column"
-      alignItems="center"
-      spacing={4}
-    >
-      <Grid item xs={12}>
-        <div className="ellipse"></div>
-      </Grid>
-
+    <>
+      <Navbar/>
+      <Grid 
+        container 
+        className="hero-container"
+      >
+        <Chatbot/>
       <Grid 
         item 
         xs={12} 
@@ -176,6 +174,7 @@ const Support = () => {
         </Accordion>
       </Grid>
     </Grid>
+    </>
   );
 };
 

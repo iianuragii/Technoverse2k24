@@ -48,7 +48,14 @@ const Chatbot = () => {
             <Box
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
-                sx={{ position: 'relative', height: '10vh', width: '100vw', zIndex: 100 }} // Ensure the entire viewport captures events
+                sx={{ 
+                    position: 'fixed', 
+                    bottom: '10px', 
+                    right: '10px', 
+                    height: '20vh', 
+                    width: '8rem', 
+                    zIndex: 100 
+                }} // Move to bottom right
             >
                 <Box
                     component="img"
@@ -57,10 +64,10 @@ const Chatbot = () => {
                     sx={{
                         position: 'absolute',
                         top: '5px',
-                        left: '640px',
+                        left: '0px', 
                         width: '8rem',
                         height: '8rem',
-                        cursor: 'pointer', // Change cursor to pointer when clicking
+                        cursor: 'pointer', 
                     }}
                     onMouseDown={handleMouseDown}
                 />
@@ -69,8 +76,8 @@ const Chatbot = () => {
                         id="chat-container"
                         sx={{
                             position: 'absolute',
-                            top: '125px',
-                            left: { xs: '20px', sm: '40px', md: '60px' },
+                            top: '-20rem',
+                            left: '-30rem', // Adjust to make sure it opens to the left of the chatbot
                             width: { xs: '20rem', sm: '25rem', md: '30rem' },
                             height: '20rem',
                             background: 'rgba(255, 255, 255, 0.3)',
