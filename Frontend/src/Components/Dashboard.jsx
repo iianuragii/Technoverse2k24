@@ -54,6 +54,9 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
+      <Grid item xs={12}>
+        <div className="ellipse"></div>
+      </Grid>
       <Container>
         <Chatbot />
         <Box sx={{ textAlign: 'center', mt: 8 }}>

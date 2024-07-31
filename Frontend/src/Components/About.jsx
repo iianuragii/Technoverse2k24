@@ -11,6 +11,9 @@ const About = () => {
   return (  
     <>
       <Navbar/>
+      <Grid item xs={12}>
+        <div className="ellipse"></div>
+      </Grid>
     <Grid 
       container 
       className="hero-container"
