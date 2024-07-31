@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Box, Grid, useTheme, styled } from '@mui/material';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Global.css';
 
 const CustomTextField = styled(TextField)(() => ({
@@ -36,14 +36,15 @@ const Login = () => {
       password,
     };
 
-    console.log({
-      email: userData.email,
-    });
-
     try {
-      const response = await axios.post('http://localhost:5000/', userData);
+      const response = await axios.post('http://localhost:5000/login', userData);
       console.log('Response from backend:', response.data);
-      navigate('/home');
+      if(response.data.success == 1) {
+        navigate('/home');
+      } else {
+        console.log('Wrong credentials given');
+      }
+      
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -86,7 +87,6 @@ const Login = () => {
               required
             />
             <Grid mt={4}>
-              <Link to="/home" style={{ textDecoration: 'none', width: '100%' }}>
                 <Button
                   type='submit'
                   variant="outlined"
@@ -98,7 +98,6 @@ const Login = () => {
                   size="large" fullWidth>
                     Log In
                 </Button>
-              </Link>
             </Grid>
           </form>          
         </Box>

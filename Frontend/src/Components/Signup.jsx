@@ -35,17 +35,12 @@ const Signup = () => {
     const userData = {
       email,
       password,
-      confirmPassword,
     };
-
-    console.log({
-      email: userData.email,
-    });
 
     try {
       const response = await axios.post('http://localhost:5000/', userData);
-      console.log('Response from backend:', response.data);
-      navigate('/home');
+      console.log('Response from backend:', response);
+      navigate('/home');      
     } catch (error) {
       console.error('Error sending data to backend:', error);
     }
@@ -110,7 +105,7 @@ const Signup = () => {
                     '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
                   }} 
                   size="large" fullWidth>
-                      Sign Up
+                    Sign Up
                   </Button>
                 : <Button
                   variant="outlined"
