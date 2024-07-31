@@ -22,7 +22,7 @@ app.post('/', async (req, res) => {
     const db = await getDB();
     const collection = db.collection('FlickCollection');  // Use FlickCollections collection
     const result = await collection.insertOne({ email, password, confirmPassword });
-    console.log(`Sign-up details are sent to the Database.`)
+    console.log("Sign-up details are sent to the Database.")
     res.json({ message: 'Signup data received', result });
   } catch (error) {
     console.error('Error in sign-up endpoint:', error);
