@@ -20,8 +20,10 @@ app.post('/', async (req, res) => {
   try {
     const db = await getDB();
     const collection = db.collection('FlickCollection');  // Use FlickCollections collection
+    const result = await collection.insertOne({ email, password, confirmPassword });
+    console.log("Sign-up details are sent to the Database.")
+    res.json({ message: 'Signup data received', result });
     const check = await collection.findOne({ email });
-    // console.log("HEHE", check);
 
     if (check === null) {  // Check if no document was found
       const result = await collection.insertOne({ email, password });    
