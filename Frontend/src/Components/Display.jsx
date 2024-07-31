@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Button, TextField, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import CryptoJS from "crypto-js";
 
 const CustomTextField = styled(TextField)({
   '& label': {
@@ -24,7 +25,6 @@ const CustomTextField = styled(TextField)({
     },
   },
 });
-
 const CustomButton = styled(Button)({
   backgroundColor: '#8A6FF2',
   color: 'white',
@@ -32,24 +32,40 @@ const CustomButton = styled(Button)({
     backgroundColor: '#7B5EDB',
   },
 });
+const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
 
 function Display({ contract, account }) {
   const [data, setData] = useState([]);
+  const [otherAddress, setOtherAddress] = useState("");
+
+  const handleAddressChange = (e) => {
+    setOtherAddress(e.target.value);
+  };
 
   const getdata = async () => {
-    let dataArray;
-    const Otheraddress = document.querySelector(".address").value;
+    let dataArray = [];
+
     try {
-      if (Otheraddress) {
-        dataArray = await contract.display(Otheraddress);
-      } else {
-        dataArray = await contract.display(account);
+      if (otherAddress) {
+        // Fetch data for the address entered in the input field
+        const otherAccountData = await contract.display(otherAddress);
+        dataArray = dataArray.concat(otherAccountData);
+        console.log("dataArray", dataArray);
+        console.log("Other Address", otherAddress);
+        console.log("Other account data", otherAccountData);
       }
+
+      // Fetch data for the current logged-in account
+      const currentAccountData = await contract.display(account);
+      dataArray = dataArray.concat(currentAccountData);
+      console.log("dataArray", dataArray);
+
     } catch (e) {
       alert("You don't have access");
       return;
     }
-    if (dataArray && dataArray.length > 0) {
+
+    if (dataArray.length > 0) {
       const str_array = dataArray.toString().split(",");
       const images = str_array.map((item, i) => {
         let cleanItem = item;
@@ -57,12 +73,27 @@ function Display({ contract, account }) {
         if (item.startsWith("ipfs://")) {
           cleanItem = item.substring(7);
         } else if (item.startsWith("https://gateway.pinata.cloud/ipfs/")) {
-          cleanItem = item.substring(28);
+          cleanItem = item.substring(34);
         }
 
         cleanItem = cleanItem.replace('/fs/', '');
 
-        const imageUrl = `https://gateway.pinata.cloud/ipfs/${cleanItem}`;
+        //Decrypting the item
+        // const decrypted = CryptoJS.AES.decrypt(cleanItem, encryptionKey);
+        // const decryptedStr = CryptoJS.enc.Utf8.stringify(decrypted);
+        // console.log("Decrypted data:", decryptedStr);
+        let decryptedStr = cleanItem;
+
+        try {
+          // Try to decrypt
+          const bytes = CryptoJS.AES.decrypt(cleanItem, encryptionKey);
+          decryptedStr = CryptoJS.enc.Utf8.stringify(bytes);
+        } catch (error) {
+          // If decryption fails, assume it's already a valid format
+          console.warn("Decryption failed or not required:", error);
+        }
+
+        const imageUrl = `https://gateway.pinata.cloud/ipfs/${decryptedStr}`;
 
         return {
           url: imageUrl,
@@ -105,6 +136,8 @@ function Display({ contract, account }) {
             variant="outlined"
             className="address"
             sx={{ flex: 1, marginRight: 2 }}
+            value={otherAddress}
+            onChange={handleAddressChange}
           />
           <CustomButton
             variant="contained"
