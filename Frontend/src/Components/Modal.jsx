@@ -233,3 +233,4 @@ const Modal = ({ setModalOpen, contract }) => {
 };
 
 export default Modal;
+

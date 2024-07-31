@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 
 const Navbar = () => {
+    const { isAuthenticated, logout } = useContext(AuthContext);
+
     return (
         <AppBar 
             position="static" 
