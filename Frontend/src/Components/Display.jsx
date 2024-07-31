@@ -25,7 +25,13 @@ const CustomTextField = styled(TextField)({
     },
   },
 });
-
+const CustomButton = styled(Button)({
+  backgroundColor: '#8A6FF2',
+  color: 'white',
+  '&:hover': {
+    backgroundColor: '#7B5EDB',
+  },
+});
 const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
 
 function Display({ contract, account }) {
@@ -124,25 +130,22 @@ function Display({ contract, account }) {
             </Grid>
           </Box>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <CustomTextField
-            fullWidth
             label="Enter Address"
             variant="outlined"
             className="address"
+            sx={{ flex: 1, marginRight: 2 }}
             value={otherAddress}
             onChange={handleAddressChange}
           />
-        </Grid>
-        <Grid item xs={12}>
-          <Button
+          <CustomButton
             variant="contained"
-            color="primary"
             onClick={getdata}
             className="center button"
           >
             Get Data
-          </Button>
+          </CustomButton>
         </Grid>
       </Grid>
     </Box>
