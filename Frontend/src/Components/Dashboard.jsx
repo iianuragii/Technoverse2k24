@@ -78,7 +78,7 @@ const Dashboard = () => {
             Account: {account}
           </Typography>
           </Grid>
-          <Grid container justifyContent="center" spacing={2} sx={{ mt: 4 }}>
+          <Grid container justifyContent="center" spacing={2} sx={{ mt: 2 }}>
             <Grid item xs={12} md={6}>
               <Display contract={contract} account={account} />
             </Grid>
@@ -115,17 +115,10 @@ const Dashboard = () => {
           <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 2, mb: 4 }}>
             <Button
               variant="contained"
-              sx={{ backgroundColor: '#BB86FC', color: '#FFF', borderRadius: '10px', mr: 2 }}
-              onClick={() => console.log("Revoke functionality here")}
-            >
-              Revoke
-            </Button>
-            <Button
-              variant="contained"
               sx={{ backgroundColor: '#03DAC5', color: '#000', borderRadius: '10px', ml: 2 }}
               onClick={() => setModalOpen(true)}
             >
-              Share
+              Share Now
             </Button>
           </Box>
         </Box>

@@ -25,7 +25,7 @@ app.post('/', async (req, res) => {
 
     if (check === null) {  // Check if no document was found
       const result = await collection.insertOne({ email, password });    
-      console.log(`Sign-up details are sent to the Database.`);
+      console.log("Sign-up details are sent to the Database.");
       res.json({ message: 'Signup data received', result });
     } else {
       console.log('Email ID already exists');
