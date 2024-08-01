@@ -79,8 +79,8 @@ const Dashboard = () => {
             Account: {account}
           </Typography>
           </Grid>
-          <Grid container justifyContent="flex-start" spacing={2} sx={{ mt: 2 }}>
-            <Grid item xs={12} md={6}>
+          <Grid container justifyContent="center" spacing={2} sx={{ mt: 2 }}>
+            <Grid item xs={12} md={10} >
               <Display contract={contract} account={account} />
             </Grid>
           </Grid>

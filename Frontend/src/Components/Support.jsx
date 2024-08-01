@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Grid, Box, Button, TextField, Accordion, AccordionSummary, AccordionDetails, useTheme } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import './Global.css'; // Assuming this contains the gradient and other styles from Hero
+import './Global.css'; 
 import Navbar from './Navbar';
 import Chatbot from './Chatbot';
 

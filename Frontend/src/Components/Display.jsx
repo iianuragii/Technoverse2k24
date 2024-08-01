@@ -24,10 +24,10 @@ const CustomTextField = styled(TextField)({
       borderColor: 'white',
     },
     '& input': {
-      color: 'white', // Text color for the input field
+      color: 'white',
     },
   },
-  height: '46px', // Set the same height as the Button
+  height: '46px', 
 });
 
 const CustomButton = styled(Button)({
@@ -36,7 +36,7 @@ const CustomButton = styled(Button)({
   '&:hover': {
     backgroundColor: '#7B5EDB',
   },
-  height: '46px', // Set the same height as the TextField
+  height: '46px', 
 });
 
 const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
@@ -53,8 +53,7 @@ function Display({ contract, account }) {
     let dataArray = [];
 
     try {
-      if (otherAddress) {
-        // Fetch data for the address entered in the input field
+      if (otherAddress) {        
         const otherAccountData = await contract.display(otherAddress);
         dataArray = dataArray.concat(otherAccountData);
         console.log("dataArray", dataArray);
@@ -62,7 +61,6 @@ function Display({ contract, account }) {
         console.log("Other account data", otherAccountData);
       }
 
-      // Fetch data for the current logged-in account
       const currentAccountData = await contract.display(account);
       dataArray = dataArray.concat(currentAccountData);
       console.log("dataArray", dataArray);
@@ -85,18 +83,14 @@ function Display({ contract, account }) {
 
         cleanItem = cleanItem.replace('/fs/', '');
 
-        //Decrypting the item
-        // const decrypted = CryptoJS.AES.decrypt(cleanItem, encryptionKey);
-        // const decryptedStr = CryptoJS.enc.Utf8.stringify(decrypted);
-        // console.log("Decrypted data:", decryptedStr);
         let decryptedStr = cleanItem;
 
         try {
-          // Try to decrypt
+          
           const bytes = CryptoJS.AES.decrypt(cleanItem, encryptionKey);
           decryptedStr = CryptoJS.enc.Utf8.stringify(bytes);
         } catch (error) {
-          // If decryption fails, assume it's already a valid format
+          
           console.warn("Decryption failed or not required:", error);
         }
 
@@ -120,7 +114,7 @@ function Display({ contract, account }) {
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '100%', overflow: 'auto' }}>
             <Grid container spacing={2} justifyContent="center">
               {data.map(({ url, key }) => (
-                <Grid item key={key}>
+                <Grid item key={key} xs={6} sm={4} md={3} lg={2} xl={2}>
                   <a href={url} target="_blank" rel="noopener noreferrer">
                     <img
                       src={url}
@@ -143,7 +137,7 @@ function Display({ contract, account }) {
             variant="outlined"
             className="address"
             sx={{ flex: 1, marginRight: 2, width: '300px' }}
-            InputProps={{ style: { height: '46px' } }} // Ensuring the text field's height
+            InputProps={{ style: { height: '46px' } }} 
             value={otherAddress}
             onChange={handleAddressChange}
           />

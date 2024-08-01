@@ -12,47 +12,7 @@ console.log("pinata api key",pinataApiKey);
 function FileUpload({contract, account, provider}) {
 const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("No image selected");
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   if (file) {
-  //     try {
-  //       // Read the file as an array buffer
-  //       const reader = new FileReader();
-  //       reader.readAsArrayBuffer(file);
-  //       reader.onloadend = async () => {
-  //         // Encrypt the file
-  //         const wordArray = CryptoJS.lib.WordArray.create(reader.result);
-  //         const encrypted = CryptoJS.AES.encrypt(wordArray, encryptionKey).toString();
-          
-  //         // Convert encrypted data to a Blob
-  //         const encryptedBlob = new Blob([encrypted], { type: file.type });
-  //         const formData = new FormData();
-  //         formData.append("file", encryptedBlob, file.name);
 
-  //       const resFile = await axios({
-  //         method: "post",
-  //         url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
-  //         data: formData,
-  //         headers: {
-  //           pinata_api_key: pinataApiKey,
-  //           pinata_secret_api_key: pinataSecretApiKey,
-  //           "Content-Type": "multipart/form-data",
-  //         },
-  //       });
-  //       const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
-  //       contract.add(account,ImgHash);
-  //       alert("Successfully Image Uploaded");
-  //       setFileName("No image selected");
-  //       setFile(null);
-  //       }
-  //     } catch (e) {
-  //       alert("Unable to upload image to Pinata");
-  //     }
-  //   }
-  //   alert("Successfully Image Uploaded");
-  //   setFileName("No image selected");
-  //   setFile(null);
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (file) {
