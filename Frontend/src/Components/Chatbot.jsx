@@ -55,7 +55,7 @@ const Chatbot = () => {
                     height: '20vh', 
                     width: '8rem', 
                     zIndex: 100 
-                }} // Move to bottom right
+                }} 
             >
                 <Box
                     component="img"
@@ -77,7 +77,7 @@ const Chatbot = () => {
                         sx={{
                             position: 'absolute',
                             top: '-20rem',
-                            left: '-30rem', // Adjust to make sure it opens to the left of the chatbot
+                            left: '-30rem', 
                             width: { xs: '20rem', sm: '25rem', md: '30rem' },
                             height: '20rem',
                             background: 'rgba(255, 255, 255, 0.3)',

@@ -53,9 +53,6 @@ const About = () => {
           </Typography>
         </Grow>
       </Grid>
-      {/* <Grid>
-        <Chatbot/>
-      </Grid> */}
       <Grid item xs={12} md={6} container justifyContent="center" alignItems="center">
         <Fade in timeout={2000}>
           <img 

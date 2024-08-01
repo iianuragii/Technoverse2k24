@@ -13,10 +13,8 @@ const Hero = () => {
   const handleMetamaskButtonClick = () => {
     const userConfirmed = window.confirm('Do you have Metamask? If not, you will be redirected to the Metamask website.');
     if (userConfirmed) {
-      // Redirect to the Metamask website
       window.open('https://metamask.io/', '_blank');
     } else {
-      // Hide the button
       setButtonVisible(false);
     }
   };
@@ -30,7 +28,7 @@ const Hero = () => {
       <Grid
         container
         className="hero-container"
-        sx={{ position: 'relative', paddingTop: theme.spacing(8) }} // Padding to avoid overlap with Navbar
+        sx={{ position: 'relative', paddingTop: theme.spacing(8) }} 
       >
         <Chatbot />
         <Grid
@@ -87,7 +85,7 @@ const Hero = () => {
                 variant="outlined"
                 sx={{ borderColor: '#8A6FF2', color: '#8A6FF2', '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' } }}
               >
-                <Link to='/about' style={{ textDecoration: 'none', color: '#8A6FF2' }}>
+                <Link to='/about' style={{ textDecoration: 'none', color: 'white' }}>
                   KNOW MORE
                 </Link>
               </Button>
@@ -105,13 +103,12 @@ const Hero = () => {
           </Fade>
         </Grid>
 
-        {/* Button positioned absolutely at the top right */}
         {isButtonVisible && (
           <Box
             sx={{
               position: 'absolute',
-              top: theme.spacing(8), // Adjust this value to position the button below the Navbar
-              right: theme.spacing(2), // Adjust this value for spacing from the right edge
+              top: theme.spacing(8), 
+              right: theme.spacing(2), 
               zIndex: 1
             }}
           >
@@ -123,7 +120,7 @@ const Hero = () => {
                 paddingY: '6px',
                 borderColor: '#8A6FF2',
                 color: '#FFFFFF',
-                borderRadius: '24px', // Increased border-radius for more curves
+                borderRadius: '24px', 
                 width: 'auto',
                 minWidth: '200px',
                 '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' }
