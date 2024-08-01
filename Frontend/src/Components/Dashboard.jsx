@@ -74,20 +74,26 @@ const Dashboard = () => {
           >
             <span style={{ color: '#8A6FF2' }}>Dash</span>board
           </Typography>
-          <Typography variant="h6" sx={{ color: '#6E40C9' }}>
+
+          <Typography variant="h6" sx={{ color: 'white' }}>
             Account: {account}
           </Typography>
           </Grid>
-          <Grid container justifyContent="center" spacing={2} sx={{ mt: 2 }}>
+          <Grid container justifyContent="flex-start" spacing={2} sx={{ mt: 2 }}>
             <Grid item xs={12} md={6}>
               <Display contract={contract} account={account} />
             </Grid>
           </Grid>
         </Box>
+        <Grid sx={{
+          position:'relative'
+        }}>
         <Box sx={{
-          background: 'linear-gradient(135deg, #6E40C9 0%, #6E40C9 100%)',
+          position: 'center',
+          background: 'linear-gradient(108.01deg, #A18EFE 10.49%, #351A6C 101.01%)' ,
+          borderradius: '14px',
           borderRadius: '10px',
-          padding: '20px',
+          padding: '30px',
           color: '#FFF',
           textAlign: 'center',
           mt: 4
@@ -96,17 +102,16 @@ const Dashboard = () => {
             Keep All Your Files Secured with FlickFile
           </Typography>
           <Box sx={{
+            position:'center',
             border: '2px dashed #FFF',
+            background: 'rgba(37, 37, 43, 1)',
             borderRadius: '10px',
-            padding: '40px',
+            padding: '80px',
             mb: 4
           }}>
             <CloudUploadIcon sx={{ fontSize: '48px', color: '#FFF' }} />
             <Typography variant="h6" sx={{ mt: 2 }}>
               Supports JPG, PNG, MP4
-            </Typography>
-            <Typography sx={{ mt: 1 }}>
-              Upload your files here! Or <span style={{ color: '#BB86FC', cursor: 'pointer' }}>Browse</span>
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 4 }}>
               <FileUpload account={account} provider={provider} contract={contract} />
@@ -122,6 +127,7 @@ const Dashboard = () => {
             </Button>
           </Box>
         </Box>
+        </Grid>
       </Container>
       {modalOpen && (
         <Modal setModalOpen={setModalOpen} contract={contract} />
