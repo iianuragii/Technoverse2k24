@@ -23,15 +23,22 @@ const CustomTextField = styled(TextField)({
     '&.Mui-focused fieldset': {
       borderColor: 'white',
     },
+    '& input': {
+      color: 'white', // Text color for the input field
+    },
   },
+  height: '46px', // Set the same height as the Button
 });
+
 const CustomButton = styled(Button)({
   backgroundColor: '#8A6FF2',
   color: 'white',
   '&:hover': {
     backgroundColor: '#7B5EDB',
   },
+  height: '46px', // Set the same height as the TextField
 });
+
 const encryptionKey = import.meta.env.VITE_ENCRYPTION_KEY;
 
 function Display({ contract, account }) {
@@ -130,12 +137,13 @@ function Display({ contract, account }) {
             </Grid>
           </Box>
         </Grid>
-        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', width: '100%' }}>
           <CustomTextField
             label="Enter Address"
             variant="outlined"
             className="address"
-            sx={{ flex: 1, marginRight: 2 }}
+            sx={{ flex: 1, marginRight: 2, width: '300px' }}
+            InputProps={{ style: { height: '46px' } }} // Ensuring the text field's height
             value={otherAddress}
             onChange={handleAddressChange}
           />

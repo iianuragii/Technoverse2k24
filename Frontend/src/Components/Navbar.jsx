@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, Button, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContext';
+import logo from '../assets/logo 2.svg'
 
 const Navbar = () => {
     const { isAuthenticated, logout } = useContext(AuthContext);
@@ -18,9 +19,13 @@ const Navbar = () => {
             }}
         >
             <Toolbar sx={{ justifyContent: 'space-between' }}>
-                <Typography variant="h6" sx={{ color: '#FFFFFF' }}>
-                    FlickFiles
-                </Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <img 
+                        src={logo} 
+                        alt="FlickFiles Logo" 
+                        style={{ height: '40px', width: 'auto' }} // Adjust size as needed
+                    />
+                </Box>
                 <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'center' }}>
                     <Button color="inherit">
                         <Link to='/home' style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
@@ -36,18 +41,32 @@ const Navbar = () => {
                     </Button>
                 </Box>
                 <Box>
-                    <Button
-                        variant="outlined"
-                        sx={{
-                            borderColor: '#8A6FF2',
-                            color: 'white',
-                            '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
-                        }}
-                    >
-                        <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+                    {isAuthenticated ? (
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                borderColor: '#8A6FF2',
+                                color: 'white',
+                                '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                            }}
+                            onClick={logout}
+                        >
                             Sign out
-                        </Link>
-                    </Button>
+                        </Button>
+                    ) : (
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                borderColor: '#8A6FF2',
+                                color: 'white',
+                                '&:hover': { backgroundColor: '#8A6FF2', borderColor: '#8A6FF2' }
+                            }}
+                        >
+                            <Link to='/login' style={{ textDecoration: 'none', color: 'white' }}>
+                                Sign in
+                            </Link>
+                        </Button>
+                    )}
                 </Box>
             </Toolbar>
         </AppBar>

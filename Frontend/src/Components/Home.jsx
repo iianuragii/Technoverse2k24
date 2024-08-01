@@ -8,22 +8,25 @@ import Chatbot from './Chatbot';
 
 const Hero = () => {
   const theme = useTheme();
-  const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const [isButtonVisible, setButtonVisible] = useState(true);
 
   const handleMetamaskButtonClick = () => {
     const userConfirmed = window.confirm('Do you have Metamask? If not, you will be redirected to the Metamask website.');
     if (userConfirmed) {
       // Redirect to the Metamask website
-      window.location.href = 'https://metamask.io/';
+      window.open('https://metamask.io/', '_blank');
     } else {
-      // Disable the button
-      setButtonDisabled(true);
+      // Hide the button
+      setButtonVisible(false);
     }
   };
 
   return (
     <>
       <Navbar />
+      <Grid item xs={12}>
+        <div className="ellipse"></div>
+      </Grid>
       <Grid
         container
         className="hero-container"
@@ -103,31 +106,33 @@ const Hero = () => {
         </Grid>
 
         {/* Button positioned absolutely at the top right */}
-        <Box
-          sx={{
-            position: 'absolute',
-            top: theme.spacing(8), // Adjust this value to position the button below the Navbar
-            right: theme.spacing(2), // Adjust this value for spacing from the right edge
-            zIndex: 1
-          }}
-        >
-          <Button
-            variant="outlined"
-            disabled={isButtonDisabled}
-            onClick={handleMetamaskButtonClick}
+        {isButtonVisible && (
+          <Box
             sx={{
-              backgroundColor: 'white',
-              color: 'black',
-              width: 'auto',
-              minWidth: '200px',
-              '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' }
+              position: 'absolute',
+              top: theme.spacing(8), // Adjust this value to position the button below the Navbar
+              right: theme.spacing(2), // Adjust this value for spacing from the right edge
+              zIndex: 1
             }}
           >
-            <Link to='#' style={{ textDecoration: 'none', color: 'black' }}>
+            <Button
+              variant="outlined"
+              onClick={handleMetamaskButtonClick}
+              sx={{
+                marginRight: '10px',
+                paddingY: '6px',
+                borderColor: '#8A6FF2',
+                color: '#FFFFFF',
+                borderRadius: '24px', // Increased border-radius for more curves
+                width: 'auto',
+                minWidth: '200px',
+                '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' }
+              }}
+            >
               Don't Have Metamask?
-            </Link>
-          </Button>
-        </Box>
+            </Button>
+          </Box>
+        )}
       </Grid>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Typography, Container, Box, Grid, useTheme, styled } from '@mui/material';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Global.css';
 
 const CustomTextField = styled(TextField)(() => ({
@@ -100,8 +100,13 @@ const Login = () => {
                 </Button>
             </Grid>
           </form>          
+          </Box>
+        <Box mt={2} textAlign="center">
+          <Typography variant="body2" color="white">
+            Don't have an account? <Link to="/" style={{ color: 'white', textDecoration: 'underline' }}>SignUp</Link>
+          </Typography>
         </Box>
-      </Box>
+        </Box>
     </Container>
   );
 };

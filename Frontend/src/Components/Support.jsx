@@ -16,6 +16,9 @@ const Support = () => {
   return (
     <>
       <Navbar/>
+      <Grid item xs={12}>
+        <div className="ellipse"></div>
+      </Grid>
       <Grid 
         container 
         className="hero-container"
@@ -117,61 +120,6 @@ const Support = () => {
             Submit
           </Button>
         </Box>
-      </Grid>
-
-      <Grid item xs={12} sx={{ width: '100%', maxWidth: '800px', marginTop: theme.spacing(4) }}>
-        <Typography 
-          variant='h4' 
-          className="hero-text" 
-          style={{ fontWeight: 'bold', marginBottom: theme.spacing(2), textAlign: 'center' }}
-        >
-          Frequently Asked Questions
-        </Typography>
-        
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography variant="h6"><b>How do I reset my password?</b></Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2">
-              To reset your password, go to the login page and click on 'Forgot Password'. Follow the instructions sent to your registered email.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel2a-content"
-            id="panel2a-header"
-          >
-            <Typography variant="h6"><b>How do I contact support?</b></Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2">
-              You can contact support by emailing us at support@flickfile.com or by filling out the contact form on our website.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
-        
-        <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel3a-content"
-            id="panel3a-header"
-          >
-            <Typography variant="h6"><b>What is decentralized storage?</b></Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography variant="body2">
-              Decentralized storage distributes your data across multiple nodes in a network, enhancing security and reducing dependence on a single server.
-            </Typography>
-          </AccordionDetails>
-        </Accordion>
       </Grid>
     </Grid>
     </>
