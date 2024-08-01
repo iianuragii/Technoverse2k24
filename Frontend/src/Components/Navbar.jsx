@@ -9,7 +9,7 @@ const Navbar = () => {
 
     return (
         <AppBar 
-            position="static" 
+            position="sticky" 
             elevation={0}
             sx={{ 
                 background: 'rgba(255, 255, 255, 0.1)',

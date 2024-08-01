@@ -87,7 +87,7 @@ const Hero = () => {
                 variant="outlined"
                 sx={{ borderColor: '#8A6FF2', color: '#8A6FF2', '&:hover': { backgroundColor: '#8A6FF2', color: '#FFFFFF' } }}
               >
-                <Link to='/about' style={{ textDecoration: 'none', color: '#8A6FF2' }}>
+                <Link to='/about' style={{ textDecoration: 'none', color: 'white' }}>
                   KNOW MORE
                 </Link>
               </Button>
