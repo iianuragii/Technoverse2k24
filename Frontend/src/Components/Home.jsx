@@ -66,7 +66,7 @@ const Hero = () => {
               className="description-text"
               style={{ marginTop: theme.spacing(2), marginBottom: theme.spacing(8) }}
             >
-              FlickerFile is your ultimate decentralized storage solution, offering unmatched security, privacy, and accessibility for all your digital assets.
+              FlickFile is your ultimate decentralized storage solution, offering unmatched security, privacy, and accessibility for all your digital assets.
             </Typography>
           </Grow>
           <Box sx={{ display: 'flex', gap: theme.spacing(2), flexDirection: { xs: 'column', sm: 'row' }, justifyContent: { xs: 'center', md: 'flex-start' } }}>
