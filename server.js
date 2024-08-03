@@ -1,7 +1,6 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
-const { connectDB, getDB } = require('./Modules_Backend/connectDB'); // Import the DB connection
+const { connectDB, getDB } = require('./Modules_Backend/connectDB'); 
 
 const app = express();
 const PORT = 5000;
@@ -19,11 +18,10 @@ app.post('/', async (req, res) => {
 
   try {
     const db = await getDB();
-    const collection = db.collection('FlickCollection');  // Use FlickCollections collection
+    const collection = db.collection('FlickCollection');  
     const check = await collection.findOne({ email });
-    // console.log("HEHE", check);
 
-    if (check === null) {  // Check if no document was found
+    if (check === null) {  
       const result = await collection.insertOne({ email, password });    
       console.log("Sign-up details are sent to the Database.");
       res.json({ message: 'Signup data received', result });
